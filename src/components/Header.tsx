@@ -19,17 +19,25 @@ const Wrapper = styled.header`
   }
 `
 
+const Operate = styled.div`
+  margin-left: auto;
+`
+
 function Header () {
   return (
     <Wrapper>
       <img src={logoUrl} alt=""/>
-      <nav>
         <Router>
-          <NavLink to="/" activeClassName="active" exact>首页</NavLink>
-          <NavLink to="/history" activeClassName="active">上传记录</NavLink>
-          <NavLink to="/about" activeClassName="active">关于我</NavLink>
+          <nav>
+            <NavLink to="/" activeClassName="active" exact>首页</NavLink>
+            <NavLink to="/history" activeClassName="active">上传记录</NavLink>
+            <NavLink to="/about" activeClassName="active">关于我</NavLink>
+          </nav>
+          <Operate>
+            <button><NavLink to="/login">登录</NavLink></button>
+            <button><NavLink to="/register">注册</NavLink></button>
+          </Operate>
         </Router>
-      </nav>
     </Wrapper>
   );
 }
