@@ -31,11 +31,11 @@ const tailLayout = {
 const labelAlign = 'left'
 
 type Props = {
-  isLogin: boolean
+  isLogin: boolean,
 };
-
 const LoginOrRegister: React.FC<Props> = observer((props) => {
-  const { isLogin } = props
+  const { isLogin } = props;
+  const [form] = Form.useForm();
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -43,10 +43,20 @@ const LoginOrRegister: React.FC<Props> = observer((props) => {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+  const validateUsername = (rule:object, value: string) => {
+    if (/\W/.test(value)) { return Promise.reject(new Error('只能包含字母数字下划线')) }
+    if (value.length < 4 || value.length > 10) { return Promise.reject(new Error('长度为4~10个字符')) }
+    return Promise.resolve();
+  };
+  const validateConfirm = (rule: object, value: string) => {
+    if (form.getFieldValue('password') === value) { return Promise.resolve() }
+    return Promise.reject(new Error('两次密码不一致'));
+  };
   return (
     <FormWrapper>
       <span>{isLogin ? '图床系统登录' : '欢迎注册图床系统'}</span>
       <Form
+        form={form}
         {...layout}
         labelAlign={labelAlign}
         name="basic"
@@ -56,7 +66,7 @@ const LoginOrRegister: React.FC<Props> = observer((props) => {
         <Form.Item
           label="用户名"
           name="username"
-          rules={[{ required: true, message: '请输入用户名' }]}
+          rules={[{ required: true, message: '请输入用户名' }, { validator: validateUsername }]}
         >
           <Input />
         </Form.Item>
@@ -73,12 +83,11 @@ const LoginOrRegister: React.FC<Props> = observer((props) => {
           <Form.Item
             label="确认密码"
             name="confirmPassword"
-            rules={[{ required: true, message: '请输入确认密码' }]}
+            rules={[{ required: true, message: '请输入确认密码' }, { validator: validateConfirm }]}
           >
             <Input.Password />
           </Form.Item>
         }
-
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
             {isLogin ? '登录' : '注册'}
