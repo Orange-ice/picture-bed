@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import logoUrl from '@/assets/burt.png'
+import { Button } from 'antd';
 
 const Wrapper = styled.header`
   display: flex;
@@ -21,6 +22,7 @@ const Wrapper = styled.header`
 
 const Operate = styled.div`
   margin-left: auto;
+  > button:first-child{margin-right: 20px;}
 `
 
 function Header () {
@@ -34,8 +36,8 @@ function Header () {
             <NavLink to="/about" activeClassName="active">关于我</NavLink>
           </nav>
           <Operate>
-            <button><NavLink to="/login">登录</NavLink></button>
-            <button><NavLink to="/register">注册</NavLink></button>
+            <Button size="small"><NavLink to="/login">登录</NavLink></Button>
+            <Button size="small"><NavLink to="/register">注册</NavLink></Button>
           </Operate>
         </Router>
     </Wrapper>
