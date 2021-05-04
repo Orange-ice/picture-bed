@@ -1,10 +1,13 @@
 import React from 'react';
+import Layout from '@/components/Layout';
 
 function History () {
   return (
-    <div>
-      History
-    </div>
+    <Layout>
+      <div>
+        History
+      </div>
+    </Layout>
   );
 }
 
