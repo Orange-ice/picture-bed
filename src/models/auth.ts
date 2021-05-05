@@ -1,4 +1,4 @@
-import AV, { User } from 'leancloud-storage';
+import AV, { File, User } from 'leancloud-storage';
 
 AV.init({
   appId: 'GAJxuCjsdywhYFqlR64iCOvf-gzGzoHsz',
@@ -29,11 +29,28 @@ const Auth = {
     });
   },
   logout () {
-    User.logOut()
+    User.logOut();
   },
   getCurrentUser () {
-    return User.current()
+    return User.current();
   }
 };
 
-export { Auth };
+const Uploader = {
+  add (file: FileList | null, filename: string) {
+    const item = new AV.Object('Image');
+    const avFile = new File(filename, file);
+    item.set('filename', filename);
+    item.set('owner', User.current());
+    item.set('url', avFile);
+    return new Promise((resolve, reject) => {
+      item.save().then((serverFile) => {
+        resolve(serverFile);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
+};
+
+export { Auth, Uploader };
