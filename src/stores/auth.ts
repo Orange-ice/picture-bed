@@ -1,8 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
-import { UserStore } from '@/stores/user';
+import UserStore from '@/stores/user';
 import { Auth } from '@/models/auth';
-
-const User = new UserStore();
 
 class AuthStore {
   values = {
@@ -32,10 +30,10 @@ class AuthStore {
   login () {
     return new Promise((resolve, reject) => {
       Auth.login(this.values.username, this.values.password).then(user => {
-        User.setCurrentUser();
+        UserStore.setCurrentUser();
         resolve(user);
       }).catch((error) => {
-        User.resetCurrentUser();
+        UserStore.resetCurrentUser();
         reject(error);
       });
     });
@@ -44,10 +42,10 @@ class AuthStore {
   register () {
     return new Promise((resolve, reject) => {
       Auth.register(this.values.username, this.values.password).then(user => {
-        User.setCurrentUser();
+        UserStore.setCurrentUser();
         resolve(user);
       }).catch((error) => {
-        User.resetCurrentUser();
+        UserStore.resetCurrentUser();
         reject(error);
       });
     });
@@ -55,8 +53,8 @@ class AuthStore {
 
   logout () {
     Auth.logout();
-    User.resetCurrentUser();
+    UserStore.resetCurrentUser();
   }
 }
 
-export { AuthStore };
+export default new AuthStore();
