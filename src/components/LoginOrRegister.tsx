@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import styled from 'styled-components';
+import { useStores } from '@/stores';
+import { useHistory } from 'react-router-dom';
 
 const FormWrapper = styled.div`
   padding: 20px;
@@ -33,11 +35,44 @@ const labelAlign = 'left'
 type Props = {
   isLogin: boolean,
 };
+interface UserInfo {
+  username: string,
+  password: string
+}
 const LoginOrRegister: React.FC<Props> = observer((props) => {
   const { isLogin } = props;
   const [form] = Form.useForm();
-  const onFinish = (values: any) => {
+  const { AuthStore } = useStores();
+  const history = useHistory();
+  const setInfo = (values: UserInfo) => {
+    AuthStore.setUsername(values.username);
+    AuthStore.setPassword(values.password);
+  }
+  const login = (values: UserInfo) => {
+    setInfo(values)
+    AuthStore.login().then(() => {
+      message.success('登录成功')
+      history.push('/')
+    }).catch((error) => {
+      message.error(error.rawMessage)
+    })
+  };
+  const register = (values: UserInfo) => {
+    setInfo(values)
+    AuthStore.register().then(() => {
+      message.success('注册成功，并成功登录')
+      history.push('/')
+    }).catch((error) => {
+      message.error(error.rawMessage)
+    })
+  };
+  const onFinish = (values: UserInfo) => {
     console.log('Success:', values);
+    if (isLogin) {
+      login(values)
+    } else {
+      register(values)
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
