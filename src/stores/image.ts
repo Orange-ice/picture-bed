@@ -29,6 +29,7 @@ class ImageStore {
 
   upload () {
     this.isUploading = true
+    this.serverFile = null
     return new Promise((resolve, reject) => {
       Uploader.add(this.file, this.filename).then((serverFile) => {
         // @ts-ignore
