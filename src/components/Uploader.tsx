@@ -20,7 +20,7 @@ const Name = styled.dd`
   color: deepskyblue;
 `;
 const Uploader = observer(() => {
-  const { ImageStore } = useStores();
+  const { ImageStore, UserStore } = useStores();
   const inputWidth: MutableRefObject<HTMLInputElement> = useRef() as MutableRefObject<HTMLInputElement>;
   const inputHeight: MutableRefObject<HTMLInputElement> = useRef() as MutableRefObject<HTMLInputElement>;
   const [width, setWidth] = useState('300');
@@ -36,6 +36,10 @@ const Uploader = observer(() => {
     beforeUpload: (file: File) => {
       ImageStore.setFile(file);
       ImageStore.setFilename(file.name);
+      if (!UserStore.currentUser) {
+        message.warning('请先登录再上传');
+        return false;
+      }
       ImageStore.upload().then(serverFile => {
         message.success('上传成功');
         console.log(serverFile);
@@ -57,7 +61,7 @@ const Uploader = observer(() => {
           band files
         </p>
       </Dragger>
-      {ImageStore.serverFile
+      {ImageStore.serverFile && UserStore.currentUser
         ? <Result>
           <h1>上传结果</h1>
           <dl>
