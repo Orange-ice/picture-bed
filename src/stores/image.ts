@@ -4,7 +4,7 @@ import { Object } from 'leancloud-storage';
 
 class ImageStore {
   filename = '';
-  file: FileList | null = null;
+  file: File | null = null;
   isUploading = false;
   serverFile: Object | null = null;
   constructor () {
@@ -23,7 +23,7 @@ class ImageStore {
     this.filename = newFilename
   }
 
-  setFile (newFile: FileList) {
+  setFile (newFile: File) {
     this.file = newFile
   }
 

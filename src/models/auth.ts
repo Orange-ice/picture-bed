@@ -1,4 +1,4 @@
-import AV, { File, User } from 'leancloud-storage';
+import AV, { User } from 'leancloud-storage';
 
 AV.init({
   appId: 'GAJxuCjsdywhYFqlR64iCOvf-gzGzoHsz',
@@ -37,9 +37,9 @@ const Auth = {
 };
 
 const Uploader = {
-  add (file: FileList | null, filename: string) {
+  add (file: File | null, filename: string) {
     const item = new AV.Object('Image');
-    const avFile = new File(filename, file);
+    const avFile = new AV.File(filename, file);
     item.set('filename', filename);
     item.set('owner', User.current());
     item.set('url', avFile);
