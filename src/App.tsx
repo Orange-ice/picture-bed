@@ -2,6 +2,7 @@ import React from 'react';
 import '@/App.css';
 import 'antd/dist/antd.css';
 import { Switch, Route, HashRouter as Router } from 'react-router-dom';
+import { useStores } from '@/stores';
 
 import Home from '@/pages/Home';
 import History from '@/pages/History';
@@ -10,6 +11,19 @@ import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 
 function App () {
+  const { UserStore } = useStores();
+  React.useEffect(() => {
+    const isLogin = JSON.parse(localStorage.getItem('isLogin') || 'false');
+    isLogin ? UserStore.setCurrentUser() : UserStore.resetCurrentUser()
+    UserStore.setCurrentUser();
+    window.addEventListener('beforeunload', (e) => {
+      if (UserStore.currentUser) {
+        localStorage.setItem('isLogin', 'true');
+      } else {
+        localStorage.setItem('isLogin', 'false');
+      }
+    })
+  }, [])
   return (
     <>
       <Router>

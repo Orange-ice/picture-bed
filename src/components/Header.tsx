@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import logoUrl from '@/assets/burt.png'
 import { Button } from 'antd';
 import { useStores } from '@/stores';
+import { observer } from 'mobx-react';
 
 const Wrapper = styled.header`
   display: flex;
@@ -30,7 +31,7 @@ const Operate = styled.div`
   }
 `
 
-function Header () {
+const Header = observer(() => {
   const { UserStore, AuthStore } = useStores()
   const history = useHistory();
   const logout = () => {
@@ -61,6 +62,6 @@ function Header () {
         </Router>
     </Wrapper>
   );
-}
+})
 
 export default Header;

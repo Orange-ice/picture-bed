@@ -5,6 +5,7 @@ import { Button, List } from 'antd';
 import { Object } from 'leancloud-storage';
 import styled from 'styled-components';
 import { useStores } from '@/stores';
+import { observer } from 'mobx-react';
 
 const Img = styled.img`
   width: 120px;
@@ -13,14 +14,15 @@ const Img = styled.img`
   border: solid 1px #ccc;
 `;
 
-function History () {
+const History = observer(() => {
   const { UserStore } = useStores();
   const [loading, setLoading] = useState(false);
   const [listData, setListData] = useState<Object[]>([]);
   const [hasData, setHasData] = useState(true);
   const [page, setPage] = useState(0);
   const fetchData = (page: number) => {
-    if (!UserStore.currentUser) { return; }
+    // if (!UserStore.currentUser ) { return; }
+    if (localStorage.getItem('isLogin') === 'false') { return; }
     setLoading(true);
     Uploader.find({ page: page, limit: 10 }).then((data: any) => {
       console.log(data);
@@ -77,6 +79,6 @@ function History () {
       </div>
     </Layout>
   );
-}
+})
 
 export default History;
