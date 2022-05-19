@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/picture-bed/static/css/main.ed510cc5.chunk.css",
+    "main.js": "/picture-bed/static/js/main.9083ad8a.chunk.js",
+    "main.js.map": "/picture-bed/static/js/main.9083ad8a.chunk.js.map",
+    "runtime-main.js": "/picture-bed/static/js/runtime-main.7852f4c1.js",
+    "runtime-main.js.map": "/picture-bed/static/js/runtime-main.7852f4c1.js.map",
+    "static/css/2.af4e9669.chunk.css": "/picture-bed/static/css/2.af4e9669.chunk.css",
+    "static/js/2.e614ac6f.chunk.js": "/picture-bed/static/js/2.e614ac6f.chunk.js",
+    "static/js/2.e614ac6f.chunk.js.map": "/picture-bed/static/js/2.e614ac6f.chunk.js.map",
+    "static/js/3.46bced0a.chunk.js": "/picture-bed/static/js/3.46bced0a.chunk.js",
+    "static/js/3.46bced0a.chunk.js.map": "/picture-bed/static/js/3.46bced0a.chunk.js.map",
+    "index.html": "/picture-bed/index.html",
+    "static/css/2.af4e9669.chunk.css.map": "/picture-bed/static/css/2.af4e9669.chunk.css.map",
+    "static/css/main.ed510cc5.chunk.css.map": "/picture-bed/static/css/main.ed510cc5.chunk.css.map",
+    "static/js/2.e614ac6f.chunk.js.LICENSE.txt": "/picture-bed/static/js/2.e614ac6f.chunk.js.LICENSE.txt",
+    "static/media/burt.37709180.png": "/picture-bed/static/media/burt.37709180.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7852f4c1.js",
+    "static/css/2.af4e9669.chunk.css",
+    "static/js/2.e614ac6f.chunk.js",
+    "static/css/main.ed510cc5.chunk.css",
+    "static/js/main.9083ad8a.chunk.js"
+  ]
+}
