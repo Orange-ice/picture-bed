@@ -78,7 +78,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "cross-env PUBLIC_URL=/picture-bed/ node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -103,6 +103,7 @@
     "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
