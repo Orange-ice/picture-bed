@@ -12,6 +12,10 @@ const Wrapper = styled.header`
   padding: 10px 100px;
   background-color: #407fbf;
   color: #fff;
+  @media (max-width: 768px) {
+    padding: 10px 10px;
+    > img {display: none;}
+  }
   > img {height: 30px;}
   > nav {
     > a {

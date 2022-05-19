@@ -22,7 +22,7 @@ const History = observer(() => {
   const [page, setPage] = useState(0);
   const fetchData = (page: number) => {
     // if (!UserStore.currentUser ) { return; }
-    if (localStorage.getItem('isLogin') === 'false') { return; }
+    if (localStorage.getItem('isLogin') === 'false' && !UserStore.currentUser) { return; }
     setLoading(true);
     Uploader.find({ page: page, limit: 10 }).then((data: any) => {
       console.log(data);
@@ -68,7 +68,7 @@ const History = observer(() => {
                 </div>
                 <div>{item.attributes.filename}</div>
                 <div>
-                  <a href={item.attributes.url.attributes.url} target="_blank" rel="noreferrer">
+                  <a href={item.attributes.url.attributes.url} target="_blank" rel="noreferrer" style={{ wordBreak: 'break-word' }}>
                     {item.attributes.url.attributes.url}
                   </a>
                 </div>

@@ -10,6 +10,12 @@ const FormWrapper = styled.div`
   margin: 50px 500px 0;
   min-width: 500px;
   border: solid 1px #ccc;
+
+  @media (max-width: 768px) {
+    margin: 50px auto 0;
+    min-width: 200px;
+  }
+
   &:hover{
     box-shadow: 0 5px 19px 6px rgba(0,0,0,0.05);
     border: none;

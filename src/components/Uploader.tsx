@@ -76,7 +76,7 @@ const Uploader = observer(() => {
           <dl>
             <dt>线上地址</dt>
             <dd>
-              <a href={ImageStore.serverFile.attributes.url.attributes.url} target="_blank" rel="noreferrer">
+              <a href={ImageStore.serverFile.attributes.url.attributes.url} target="_blank" rel="noreferrer" style={{ wordBreak: 'break-word' }}>
                 {ImageStore.serverFile.attributes.url.attributes.url}
               </a>
             </dd>
@@ -93,7 +93,7 @@ const Uploader = observer(() => {
             </dd>
             <dd>
               <a href={`${ImageStore.serverFile.attributes.url.attributes.url}?imageView2/0/w/${width}/h/${height}`}
-                 target="_blank" rel="noreferrer">
+                 target="_blank" rel="noreferrer" style={{ wordBreak: 'break-word' }}>
                 {`${ImageStore.serverFile.attributes.url.attributes.url}?imageView2/0/w/${width}/h/${height}`}
               </a>
             </dd>
