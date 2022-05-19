@@ -5,7 +5,7 @@ function About () {
   return (
     <Layout>
       <div>
-        About
+        这是一个基于 React + Typescript 的图床应用。
       </div>
     </Layout>
   );

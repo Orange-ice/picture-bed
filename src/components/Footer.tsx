@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
 function Footer () {
   return (
     <StyledFooter>
-      Footer
+      © 2022 Burt. All rights reserved.
     </StyledFooter>
   );
 }

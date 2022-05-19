@@ -49,7 +49,7 @@ const Header = observer(() => {
           <nav>
             <NavLink to="/" activeClassName="active" exact>首页</NavLink>
             <NavLink to="/history" activeClassName="active">上传记录</NavLink>
-            <NavLink to="/about" activeClassName="active">关于我</NavLink>
+            <NavLink to="/about" activeClassName="active">关于</NavLink>
           </nav>
           <Operate>
             {UserStore.currentUser
